@@ -3,7 +3,7 @@
 <plugin>
    <extension
       id="nl.ou.refd.markers.dangerMarker"
-      name = "Refactoring Danger"
+      name="Refactoring Danger"
       point="org.eclipse.core.resources.markers">
       <super type="org.eclipse.core.resources.problemmarker"/>
       <persistent value="true" />
@@ -28,6 +28,15 @@
    </extension>
    
    <extension
+      point="org.eclipse.ui.commands">
+      <command
+         defaultHandler="nl.ou.refd.plugin.ui.topbarmenu.IntroduceObjectParameterButton"
+         id="refd.IntroduceObjectParameterButton"
+         name="Introduce Object Parameter">
+      </command>
+   </extension>
+   
+   <extension
          point="org.eclipse.ui.menus">
       <menuContribution
             locationURI="menu:org.eclipse.ui.main.menu">
@@ -38,41 +47,21 @@
                   commandId="refd.PullUpMethodButton"
                   label="Pull Up Method"
                   style="push"
-                  tooltip="Pull up a method to one of its superclasses">
+                  tooltip="Pull up method to superclass">
             </command>
             <command
                   commandId="refd.CombineMethodsIntoClassButton"
-                  label="Combine Methods into Class"
+                  label="Combine Methods Into Class"
                   style="push"
-                  tooltip="Combine a number of methods into a newly created class">
+                  tooltip="Combine methods into a new class">
             </command>
-            
+            <command
+                  commandId="refd.IntroduceObjectParameterButton"
+                  label="Introduce Object Parameter"
+                  style="push"
+                  tooltip="Introduce an object parameter into the selected method">
+            </command>
          </menu>
       </menuContribution>
    </extension>
-   
-   <extension
-      point="org.eclipse.ui.commands">
-   <command
-         defaultHandler="nl.ou.refd.plugin.ui.topbarmenu.IntroduceObjectParameterButton"
-         id="refd.IntroduceObjectParameterButton"
-         name="Introduce Object Parameter">
-   </command>
-</extension>
-<extension
-      point="org.eclipse.ui.menus">
-   <menuContribution
-         locationURI="menu:org.eclipse.ui.main.menu">
-      <menu
-            id="RGW"
-            label="ReFD">
-         <command
-               commandId="refd.IntroduceObjectParameterButton"
-               label="Introduce Object Parameter"
-               style="push"
-               tooltip="Introduce an object parameter into the selected method">
-         </command>
-      </menu>
-   </menuContribution>
-</extension>
 </plugin>
